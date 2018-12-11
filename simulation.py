@@ -31,7 +31,7 @@ class Simulation(object):
         All arguments will be passed as command-line arguments when the file is run.
         HINT: Look in the if __name__ == "__main__" function at the bottom.
         '''
-        
+
         # TODO: Create a Logger object and bind it to self.logger.
         # Remember to call the appropriate logger method in the corresponding parts of the simulation.
         # TODO: Call self._create_population() and pass in the correct parameters.
@@ -74,11 +74,8 @@ class Simulation(object):
         self.initial_infected = 0
         self.current_infected = 0
 
-        
-
-
         while len(population) != self.pop_size:
-            if current_infected !=  initial_infected:
+            if current_infected != initial_infected:
                 person = Person(self.next_person_id, False, True)
                 population.append(Person)
                 current_infected += 1
@@ -89,8 +86,6 @@ class Simulation(object):
                 self.next.person_id = self.next_person_id + 1
             return population
 
-            
-
         # TODO: Finish this method!  This method should be called when the simulation
         # begins, to create the population that will be used. This method should return
         # an array filled with Person objects that matches the specifications of the
@@ -99,17 +94,26 @@ class Simulation(object):
 
         # Use the attributes created in the init method to create a population that has
         # the correct intial vaccination percentage and initial infected.
-        pass
 
     def _simulation_should_continue(self):
         ''' The simulation should only end if the entire population is dead
         or everyone is vaccinated.
 
+
+
             Returns:
                 bool: True for simulation should continue, False if it should end.
         '''
-        # TODO: Complete this helper method.  Returns a Boolean.
-        pass
+        if self.vacc_percentage > 0:
+            if self.vacc_percentage == 1:
+                return False
+            else:
+                return True
+        else:
+            if self.total_dead == len(self.population):
+                return False
+            else:
+                return True
 
     def run(self):
         ''' This method should run the simulation until all requirements for ending
@@ -123,14 +127,16 @@ class Simulation(object):
         # HINT: You may want to call the logger's log_time_step() method at the end of each time step.
         # TODO: Set this variable using a helper
         time_step_counter = 0
-        should_continue = None
+        should_continue = self._simulation_should_continue()
 
         while should_continue:
             # TODO: for every iteration of this loop, call self.time_step() to compute another
             # round of this simulation.
-        print('The simulation has ended after {time_step_counter} turns.'.format(
-            time_step_counter))
-        pass
+            time_step_counter += 1
+            self.time_step(time_step_counter)
+            should_continue = self._simulation_should_continue()
+            print('The simulation has ended after {} turns.'.format(
+                time_step_counter))
 
     def time_step(self):
         ''' This method should contain all the logic for computing one time step
@@ -144,6 +150,11 @@ class Simulation(object):
             3. Otherwise call simulation.interaction(person, random_person) and
                 increment interaction counter by 1.
             '''
+            # death_total = 0 
+            # interaction = 0 
+            # for interaction < 100 and self.is_alive :
+                # ran_choice = random.choice(self.population)
+                
         # TODO: Finish this method.
         pass
 
