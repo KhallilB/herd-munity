@@ -36,8 +36,8 @@ class Logger(object):
         There have been {} deaths\n\n""".format(time_step_number, newly_infected, death_toll))
 
 if __name__ == '__main__':
-    logger = Logger('test.log')
-    logger.write_metadata(5600, 0.56, 'polio', 0.75, 45)
+    logger = Logger('logger')
+    logger.write_metadata(5600, 0.56, 'HIV', 0.75, 45)
     person1 = Person(32489234, False)
     person2 = Person(23423411, True)
     logger.log_interaction(person1, person2, False)

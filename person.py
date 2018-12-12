@@ -5,6 +5,10 @@ random.seed(42)
 
 class Person(Virus):
     ''' Person objects will populate the simulation. '''
+    id = 0
+    is_vaccinated = False
+    is_alive = True
+    infected = None
 
     def __init__(self, _id, is_vaccinated, infection=None):
         ''' We start out with is_alive = True, because we don't make vampires or zombies.
@@ -19,15 +23,19 @@ class Person(Virus):
         self.is_vaccinated = True  # boolean
         self.infection = infection  # Virus object or None
 
-    def did_survive_infection(self):
+    def did_survive_infection(self, mortality_rate):
         ''' Generate a random number and compare to virus's mortality_rate.
         If random number is smaller, person dies from the disease.
         If Person survives, they become vaccinated and they have no infection.
         Return a boolean value indicating whether they survived the infection
         '''
         ran_num = random.random()
-        if ran_num < self.mortality_rate:
+        # print(ran_num)
+        # print(mortality_rate)
+        # print('-----------')
+        if ran_num < mortality_rate:
             self.is_alive = False
+            print('dead')
             return False
         else:
             self.is_alive = True
@@ -38,8 +46,6 @@ class Person(Virus):
         # TODO:  Finish this method. Should return a Boolean
 
         # Don't understand what is it asking me todo?
-
-    
 
 
 ''' These are simple tests to ensure that you are instantiating your Person class correctly. '''
@@ -64,7 +70,6 @@ def test_not_vacc_person_instantiation():
     assert person.is_vaccinated is False
 
 
-
 def test_sick_person_instantiation():
     # Create a Virus object to give a Person object an infection
     virus = Virus("Dysentery", 0.7, 0.2)
@@ -79,10 +84,7 @@ def test_sick_person_instantiation():
     assert virus.repro_rate == 0.7
     assert virus.mortality_rate == 0.2
 
-
     # assert ...
-
-    
 
 
 def test_did_survive_infection():
@@ -99,12 +101,11 @@ def test_did_survive_infection():
         # TODO: Write your own assert statements that test
         # the values of each attribute for a Person who survived
         # assert ...
-        assert  person.is_vaccinated == True 
-    else: #not sure what this test is asking me todo
+        assert person.is_vaccinated == True
+    else:  # not sure what this test is asking me todo
         assert person.is_alive is False
         # TODO: Write your own assert statements that test
         # the values of each attribute for a Person who did not survive
         # assert ...
-        assert  person.is_vaccinated == True 
-        #not sure what the test is asking me todo
-    
+        assert person.is_vaccinated == True
+        # not sure what the test is asking me todo

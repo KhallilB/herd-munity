@@ -1,0 +1,56 @@
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
+INFO:root:
+	Population size: 82736847
+	Vaccination percentage: 82736847.0
+
+	Virus name: virusname
+	Mortality rate: 0.75
+	Reproduction num: 0
+
