@@ -74,17 +74,17 @@ class Simulation(object):
         self.initial_infected = 0
         self.current_infected = 0
 
-        while len(population) != self.pop_size:
-            if current_infected != initial_infected:
+        while len(self.population) != self.pop_size:
+            if self.current_infected != initial_infected:
                 person = Person(self.next_person_id, False, True)
-                population.append(Person)
-                current_infected += 1
+                self.population.append(Person)
+                self.current_infected += 1
             else:
                 person = Person(self.next.person_id, False)
 
-                population.append(person)
+                self.population.append(person)
                 self.next.person_id = self.next_person_id + 1
-            return population
+            return self.population
 
         # TODO: Finish this method!  This method should be called when the simulation
         # begins, to create the population that will be used. This method should return
