@@ -27,11 +27,11 @@ def test__simulation_should_continue():
     assert sim._simulation_should_continue() == False
 
 
-def test_run():
-    sim = create_simulation()
-    assert sim.current_infected == 5
-    sim.run()
-    assert sim._simulation_should_continue() == True
+# def test_run():
+#     sim = create_simulation()
+#     assert sim.current_infected == 5
+#     sim.run()
+#     assert sim._simulation_should_continue() == True
 
 
 def test_time_step():
