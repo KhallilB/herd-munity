@@ -20,7 +20,7 @@ class Person(Virus):
         '''
         self._id = int(_id)   # int
         self.is_alive = True  # boolean
-        self.is_vaccinated = True  # boolean
+        self.is_vaccinated = is_vaccinated  # boolean
         self.infection = infection  # Virus object or None
 
     def did_survive_infection(self, mortality_rate):
@@ -39,6 +39,7 @@ class Person(Virus):
             return False
         else:
             self.is_alive = True
+            self.infection = None
             self.is_vaccinated = True
             return True
 

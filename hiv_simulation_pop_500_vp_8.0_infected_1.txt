@@ -1,0 +1,8 @@
+INFO:root:
+	Population size: 500
+	Vaccination percentage: 8.0
+
+	Virus name: hiv
+	Mortality rate: 0.75
+	Reproduction num: 0
+
