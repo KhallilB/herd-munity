@@ -95,7 +95,7 @@ def test_did_survive_infection():
     person = Person(4, False, virus)
 
     # Resolve whether the Person survives the infection or not
-    survived = person.did_survive_infection()
+    survived = person.did_survive_infection(0.7)
     # Check if the Person survived or not
     if survived:
         assert person.is_alive is True

@@ -33,7 +33,6 @@ class Simulation(object):
     mortality_rate = 0
     basic_repro_num = 0
 
-
     def __init__(self, pop_size, vacc_percentage, virus_name, mortality_rate,
                  basic_repro_num, initial_infected=1):
         ''' Logger object logger records all events during the simulation.
@@ -79,7 +78,8 @@ class Simulation(object):
             pop_size, vacc_percentage, virus_name, 0.75, 0)
         self._create_population(initial_infected)
         self.mortality_rate = float(mortality_rate)
-        self.total_vac = int(float(len(self.population)) * self.vacc_percentage)
+        self.total_vac = int(float(len(self.population))
+                             * self.vacc_percentage)
 
     def _create_population(self, initial_infected):
         '''This method will create the initial population.
@@ -100,7 +100,8 @@ class Simulation(object):
 
         while len(self.population) != self.pop_size:
             if self.current_infected != initial_infected:
-                person = Person(self.next_person_id, False, Virus(self.virus_name, basic_repro_num, self.mortality_rate))
+                person = Person(self.next_person_id, False, Virus(
+                    self.virus_name, self.basic_repro_num, self.mortality_rate))
                 self.population.append(person)
                 self.current_infected += 1
                 # self.alive_infected.append(person)
@@ -141,21 +142,21 @@ class Simulation(object):
                 if person.is_alive and not person.is_vaccinated:
                     # print("Someone is alive but not vaccinated")
                     return True
-            print('Everyone either dead or vaccinated, population:', len(self.population), 'dead:', self.total_dead, 'vaccinated:', self.total_vac)
+            print('Everyone either dead or vaccinated, population:', len(
+                self.population), 'dead:', self.total_dead, 'vaccinated:', self.total_vac)
             return False
-
 
         # if self.current_infected > 0:
 
         #     for person in self.population:
-                #    if person.is_alive:
-                #        population_alive = True
-                #        break
+            #    if person.is_alive:
+            #        population_alive = True
+            #        break
 
-                # if infected_remain and population_alive:
-                #    return True
-                # else:
-                #    return False
+            # if infected_remain and population_alive:
+            #    return True
+            # else:
+            #    return False
 
     def run(self):
         ''' This method should run the simulation until all requirements for ending
@@ -218,13 +219,14 @@ class Simulation(object):
                     # increase vacc percent
                     # print('Person vaccinated')
                     self.total_vac += 1
-                    self.vacc_percentage = self.total_vac / len(self.population)
+                    self.vacc_percentage = self.total_vac / \
+                        len(self.population)
                 # self.alive_infected.remove(person)
         self._infect_newly_infected()
-        self.logger.log_time_step(counter, len(self.newly_infected) - newly_infected_count, self.total_dead - death_total)
+        self.logger.log_time_step(counter, len(
+            self.newly_infected) - newly_infected_count, self.total_dead - death_total)
 
         # TODO: Finish this method.
-        
 
     def interaction(self, person, random_person):
         '''This method should be called any time two living people are selected for an
@@ -275,7 +277,8 @@ class Simulation(object):
         for i in self.newly_infected:
             for person in self.population:
                 if person._id == i:
-                    person.infection = Virus(self.virus_name, basic_repro_num, self.mortality_rate)
+                    person.infection = Virus(
+                        self.virus_name, self.basic_repro_num, self.mortality_rate)
                     self.current_infected += 1
                     # self.alive_infected.append(person)
                     break
@@ -301,7 +304,7 @@ if __name__ == "__main__":
 
     params = sys.argv[1:]
 
-    pop_size = int(params[0]) if int(params[0]) >= 100 else 100 
+    pop_size = int(params[0]) if int(params[0]) >= 100 else 100
 
     vacc_percentage = float(params[1])
     virus_name = str(params[2])
@@ -310,7 +313,7 @@ if __name__ == "__main__":
     if len(params) == 6:
         initial_infected = int(params[5])
     else:
-         initial_infected = 1
+        initial_infected = 1
     simulation = Simulation(pop_size, vacc_percentage, virus_name, mortality_rate,
                             basic_repro_num, initial_infected)
     simulation.run()
